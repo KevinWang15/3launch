@@ -1,0 +1,57 @@
+﻿<Window x:Class="_3launch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_3launch"
+        mc:Ignorable="d"
+        Title="3launch" Height="600" Width="500" WindowStartupLocation="CenterScreen"
+        PreviewKeyDown="OnKeyInput" WindowStyle="ToolWindow" Closing="Window_Closing" ShowInTaskbar="False"
+        Topmost="True">
+
+    <DockPanel
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Height="Auto">
+        <TextBox x:Name="InputKeysBox" TextWrapping="Wrap" Text=""
+                 FontSize="22"
+                 Margin="-1,0,-1,0"
+                 DockPanel.Dock="Top"
+                 IsReadOnly="True" />
+
+        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Hidden" x:Name="list" HorizontalContentAlignment="Stretch"
+                 Margin="-1"
+                 VerticalAlignment="Stretch" Style="{StaticResource ListStyle}"
+                 SelectionChanged="list_SelectionChanged">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding" Value="4" />
+                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                    <Setter Property="BorderBrush" Value="#EFEFEF" />
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Left">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="36px" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40px" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding icon}" HorizontalAlignment="Left" />
+                        <StackPanel Orientation="Vertical" Grid.Column="1">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding name}" FontSize="16px" />
+                                <TextBlock Text="{Binding fileName}" FontSize="13px" Margin="6,3,0,0" Foreground="#AAA" />
+                            </StackPanel>
+                            <TextBlock Text="{Binding filePath}" FontSize="10px" />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+
+</Window>

@@ -14,6 +14,12 @@ Just press <kbd>Win</kbd>, then another 2 keystrokes, and the program is launche
 # Screenshot
 ![Screenshot](images/screenshot.png)
 
+# Download
+
+https://github.com/KevinWang15/3launch/releases
+
+Just download the release.zip, it's binary built for windows.
+
 # How to use
 
 1. Put your shortcuts (.lnk files) in ./shortcuts/

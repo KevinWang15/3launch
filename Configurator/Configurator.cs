@@ -96,9 +96,13 @@ namespace Configurator
                     running_button.Enabled = true;
                     return;
                 }
+
+                MessageBox.Show("Please double click 3launch.exe and launch it from Windows explorer.", "Please launch from Windows explorer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                /*
                 try
                 {
-                    Process.Start("3launch.exe");
+                    RunAsDesktopUser.run("3launch.exe");
                 }
                 catch (Exception ex)
                 {
@@ -106,6 +110,7 @@ namespace Configurator
                     running_button.Enabled = true;
                     return;
                 }
+                */
             }
             new Thread(() =>
             {
@@ -151,7 +156,7 @@ namespace Configurator
                     td.Settings.DisallowStartIfOnBatteries = false;
                     td.Settings.StopIfGoingOnBatteries = false;
                     td.Settings.ExecutionTimeLimit = TimeSpan.Zero;
-                    td.Principal.RunLevel = TaskRunLevel.Highest;
+                    // td.Principal.RunLevel = TaskRunLevel.Highest;
                     td.Actions.Add(new ExecAction(exePath, "",
                         Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName)));
                     ts.RootFolder.RegisterTaskDefinition("3launch", td);

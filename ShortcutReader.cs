@@ -57,7 +57,7 @@ namespace _3launch
                     continue;
 
                 var shortcut = new Shortcut();
-                shortcut.name = fileInfo.Name.Substring(0, 2).ToUpper();
+                shortcut.name = fileInfo.Name.Substring(0, fileInfo.Name.LastIndexOf(".")).ToUpper();
                 shortcut.filePath = GetShortcutTargetFile(fileInfo.FullName);
                 shortcut.fileName =
                     shortcut.filePath.Substring(shortcut.filePath.LastIndexOf(Path.DirectorySeparatorChar.ToString(),

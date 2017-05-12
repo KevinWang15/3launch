@@ -72,16 +72,15 @@ namespace _3launch
                 return;
             }
             var keyCode = Util.keyToChar(e.Key);
-            if (!Util.isKeyCodeValid(keyCode) || inputs.Count == 2)
+            if (!Util.isKeyCodeValid(keyCode))
                 return;
             inputs.Add(keyCode);
             render();
-            if (inputs.Count == 2)
+            if (filteredShortcuts.Length > 0)
             {
-                if (filteredShortcuts.Length > 0)
-                {
-                    launchShortcut(filteredShortcuts[0]);
-                }
+                var shortcuts = allShortcuts.Where(item => item.name == InputKeysBox.Text).ToArray();
+                if (shortcuts.Length > 0)
+                    launchShortcut(shortcuts[0]);
             }
         }
 
